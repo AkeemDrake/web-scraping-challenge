@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Mars Info</title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+</head>
+
+<body>
+  <div class='container'>
+
+    <div class='jumbotron text-center'>
+      <h1>Mission to Mars</h1>
+      <p><a class='btn btn-primary btn-lg' href='/scrape' role='button'>Scrape New Data</a></p>
+    </div>
+    <div class = 'row'>
+      <div class = 'container'>
+        {for mars_dict in mars_dict}
+        <div class = 'col-md-12'>
+          <h3>Latest Mars News</h3>
+            <h4>{{mars_dict.news_title}}</h4>
+            <p> {{ mars_dict.new_p}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class='row'>
+        <div class='card mb-3 center'>
+            <h3 class='card-header'>Featured Mars Image</h3>
+            <img style='width: 100%; display: block;' src={{ mars_dict.featured_image_url }} alt='Featured Mars Image' class='center'>
+        </div>
+        <br/>
+    </div>
+
+    <div class = 'container' >
+        <div class = 'row'>
+            <div class = 'col-md-4'>
+            <div class = 'card'>
+                {{mars_dict.mars_weather}}
+            </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class = 'row'>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Mars Data</h5>
+              <p class="card-text">{{ mars_dict.html_table }}</p>
+             </div>
+          </div>
+    </div>
+
+
+</div>
+  {% endfor %}
+</body>
+
+</html>
+
